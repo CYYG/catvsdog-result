@@ -11,7 +11,7 @@ var express = require('express'),
 io.set('transports', ['polling']);
 
 var port = process.env.PORT || 4000;
-var PG_HOST = process.env.PG_HOST || db;
+var PG_HOST = process.env.PG_HOST || 'localhost';
 
 io.sockets.on('connection', function (socket) {
 
