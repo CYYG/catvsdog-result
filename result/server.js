@@ -11,7 +11,7 @@ const express = require('express'),
 
 io.set('transports', ['polling']);
 
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 80;
 var PG_HOST = process.env.PG_HOST || 'localhost';
 var PG_USER = process.env.PG_USER || 'admin';
 var PG_PASSWORD = process.env.PG_PASSWORD || 'admin';
