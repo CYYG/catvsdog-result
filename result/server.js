@@ -16,6 +16,8 @@ var PG_HOST = process.env.PG_HOST || 'localhost';
 var PG_USER = process.env.PG_USER || 'admin';
 var PG_PASSWORD = process.env.PG_PASSWORD || 'admin';
 
+
+
 io.sockets.on('connection', function (socket) {
 
   socket.emit('message', { text : 'Welcome!' });
@@ -86,11 +88,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/views/index.html'));
 });
 
-app.get('/api/v1/results/',function (req,res) {
+app.get('/api/v1/percentage-votes/',function (req,res) {
   res.setHeader('Content-Type','application/JSON');
   ResultService.getResult(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/vote`)
     .then((resultVote) => {
-        console.log(resultVote)
         res.send(resultVote);
     })
 });

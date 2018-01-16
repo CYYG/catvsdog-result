@@ -136,5 +136,23 @@ describe('result-service', function() {
 				dbMock.verify()
 	  	})
 	})
+ //  	  	 it('close the connection at the end',function() {
+ //  		//GIVEN
+	//   	dbMock.expects('any')
+	//   		.once()
+	//   		.withArgs('SELECT * FROM votes')
+	//   		.resolves([ 
+ //  				{id_vote:1 ,vote : 'a'}
+	//   		])
+
+	//   	//WHEN
+	//   	return ResultService.getResult()
+	//   		.then((voteResult) => {
+	// 	  		//THEN )
+	// 		  	voteResult.expects("done").once();
+	// 		  	dbServiceMock.verify()
+	// 			dbMock.verify()
+	//   	})
+	// })
 })
 
