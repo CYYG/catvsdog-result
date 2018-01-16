@@ -4,20 +4,15 @@ services:
   result:
     environment:
       - PG_HOST
-    build: ./result
-    command: nodemon server.js
+    working_dir: /usr/src
+    command: ['npm', 'start']
     volumes:
-      - ./result:/app
+      - .:/usr/src
     ports:
       - "5001:80"
       - "5858:5858"
-    networks:
-      - front-tier
-      - back-tier
+    image: node:6-alpine
+    restart: on-failure:5
 
 volumes:
   db-data:
-
-networks:
-  front-tier:
-  back-tier:
