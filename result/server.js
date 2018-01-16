@@ -30,8 +30,8 @@ io.sockets.on('connection', function (socket) {
 async.retry(
   {times: 1000, interval: 1000},
   function(callback) {
-    console.log(`connecting to: postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/vote`);
-    pg.connect(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/vote`, function(err, client, done) {
+    console.log(`connecting to: postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/postgres`);
+    pg.connect(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/postgres`, function(err, client, done) {
       if (err) {
         console.error(err)
         console.error("Waiting for db");
@@ -90,7 +90,7 @@ app.get('/', function (req, res) {
 
 app.get('/api/v1/percentage-votes/',function (req,res) {
   res.setHeader('Content-Type','application/JSON');
-  ResultService.getResult(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/vote`)
+  ResultService.getResult(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/postgres`)
     .then((resultVote) => {
         res.send(resultVote);
     })
