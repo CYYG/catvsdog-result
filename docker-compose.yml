@@ -2,7 +2,7 @@ version: '3.3'
 services:
   result:
     environment:
-      - PG_HOST=db
+      - PG_HOST
       - PG_USER=postgres
       - PG_PASSWORD=postgres
     working_dir: /usr/src
