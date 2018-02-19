@@ -1,3 +1,5 @@
+
+
 const express = require('express'),
     async = require('async'),
     pg = require("pg"),
@@ -90,6 +92,7 @@ app.get('/', function (req, res) {
 
 app.get('/api/v1/percentage-votes/',function (req,res) {
   res.setHeader('Content-Type','application/JSON');
+  console.log({message: "connection to /api/v1/percentage-votes/ from :"+req.connection.remoteAddress})
   ResultService.getResult(`postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/postgres`)
     .then((resultVote) => {
         res.send(resultVote);

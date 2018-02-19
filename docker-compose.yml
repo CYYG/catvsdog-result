@@ -1,9 +1,8 @@
-version: "2"
-
+version: '3.3'
 services:
   result:
     environment:
-      - PG_HOST
+      - PG_HOST=db
       - PG_USER=postgres
       - PG_PASSWORD=postgres
     working_dir: /usr/src
@@ -15,6 +14,28 @@ services:
       - "5858:5858"
     image: node:6-alpine
     restart: on-failure:5
+    networks:
+      backend:
+      database:
+
+  db:
+    image: postgres:10-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    networks:
+      database:
+    volumes:
+      - db-data1:/var/lib/postgresql
 
 volumes:
-  db-data:
+  db-data1:
+
+networks:
+  backend:
+    external:
+      name: backend
+  database:
