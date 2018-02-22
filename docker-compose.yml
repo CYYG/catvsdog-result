@@ -5,10 +5,10 @@ services:
       - PG_HOST
       - PG_USER=postgres
       - PG_PASSWORD=postgres
-    working_dir: /usr/src
     command: ['npm', 'start']
     volumes:
       - .:/usr/src
+    working_dir: "/usr/src"
     ports:
       - "5001:80"
       - "5858:5858"
