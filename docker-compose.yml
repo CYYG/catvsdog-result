@@ -26,6 +26,13 @@ services:
     volumes:
       - db-data1:/var/lib/postgresql
 
+  inventory-service:
+    image: docker.io/etbe/inventory
+    volumes:
+      - ./inventory/contract-interface.yaml:/app/contract-interface.yaml
+    ports:
+      - "1350:1350"
+
 volumes:
   db-data1:
 

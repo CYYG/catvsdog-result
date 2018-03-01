@@ -1,0 +1,26 @@
+---
+version: '0.1' #qsdf
+encoding: UTF-8
+name: Result Percentage
+fqn: http://web1:5001
+modelVersion: '1.0'
+interfaces:
+  - name: postgres://toto:5432 database
+    fqn: postgres://toto:5432
+    direction:
+      - out
+    description: database for data stockage
+    type: database
+      database: result
+      port: 5434
+      dialect: postgres
+
+  - name: result api
+    direction:
+      - in
+    description: an API who expose the current result percentage
+    apiEndpoint: /api
+    type: http-api
+      port: 5001
+
+    
